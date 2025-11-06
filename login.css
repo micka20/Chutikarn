@@ -1,0 +1,246 @@
+/* Reset และพื้นฐาน */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kanit', 'Arial', sans-serif;
+    background-image: url('c0df913d-580b-4be1-8033-dc217b80fdfe.JPEG'); /* Updated background image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* ปรับให้ overlay เข้มขึ้นมาก */
+    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.7) 100%); /* ทำให้พื้นหลังภาพเข้มขึ้น */
+    backdrop-filter: brightness(0.8); /* ทำให้ภาพพื้นหลังสว่างขึ้นเล็กน้อยเพื่อเพิ่มรายละเอียด */
+}
+
+/* Container หลัก */
+.login-container {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* การ์ดล็อกอิน */
+.login-card {
+    /* ปรับให้การ์ดโปร่งใสขึ้นและสว่างขึ้น */
+    background: rgba(255, 255, 255, 0.7); /* ทำให้การ์ดโปร่งใสขึ้น */
+    padding: 3rem 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15); /* เพิ่มเงาให้เด่นขึ้น */
+    backdrop-filter: blur(8px); /* เพิ่ม blur ให้การ์ดอีกนิดเพื่อตัดกับพื้นหลัง */
+}
+
+.login-card h2 {
+    color: #000;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* ข้อความผิดพลาด */
+.error-message {
+    background: #fee;
+    color: #c33;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #fcc;
+    font-size: 0.9rem;
+    animation: slideDown 0.3s ease;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ฟอร์ม */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #222; /* ปรับสี label ให้เข้มขึ้นเพื่อความอ่านง่ายบนพื้นหลังที่โปร่งใส */
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #bbb; /* ปรับสีขอบ input */
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8); /* ทำให้ input โปร่งใสขึ้น */
+    font-family: 'Kanit', 'Arial', sans-serif;
+    color: #333; /* ปรับสีตัวอักษรใน input */
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #666; /* สีขอบเมื่อ focus */
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #888; /* สี placeholder */
+}
+
+/* ปุ่มแสดงรหัสผ่าน */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    color: #555; /* ปรับสีไอคอน */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password:hover {
+    background: rgba(0, 0, 0, 0.05); /* พื้นหลังเมื่อ hover */
+    color: #222;
+}
+
+.toggle-password svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+/* ปุ่มล็อกอิน */
+.btn-login {
+    width: 100%;
+    padding: 16px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    font-family: 'Kanit', 'Arial', sans-serif;
+}
+
+.btn-login:hover {
+    background: #c9302c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(217, 83, 79, 0.4);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+.btn-login:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* เอฟเฟกต์ loading */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* เอฟเฟกต์เมื่อโหลดหน้า */
+.fade-in {
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 10px;
+    }
+    
+    .login-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .login-card h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Accessibility */
+.form-group input:focus-visible {
+    outline: 2px solid #888;
+    outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
