@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=Login.php">
+    <title>Redirecting...</title>
+    <script>
+        window.onload = function() {
+            // ตรวจสอบว่ายังอยู่ที่ index.html หรือไม่ ก่อนเปลี่ยนเส้นทาง
+            if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+                window.location.href = 'Login.php';
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>กำลังเปลี่ยนเส้นทางไปหน้าเข้าสู่ระบบ...</h1>
+    <p>หากไม่เปลี่ยนเส้นทางอัตโนมัติ กรุณาคลิกที่ลิงก์ด้านล่าง:</p>
+    <p><a href="Login.php">ไปที่หน้าเข้าสู่ระบบ (Login)</a></p>
+</body>
+</html>
